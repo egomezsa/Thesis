@@ -17,16 +17,18 @@ new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 def create_features(tst, tr_count = TRAINING_COUNT, tst_count = TESTING_COUNT):
 	sample_dict = MT.create_sample_dict(tr_count, tst_count)
 	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
-	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst)
+	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst, normalize = 'M' in tst[0])
 	return ((bow_tup,au_tup))
 
 def build_ensemble(bow, au, inputstr, tr_count = TRAINING_COUNT):
 	ft = i_dict['feature_train']
 	ct = i_dict['class_train']
-
+	fte = i_dict['feature_test']
+	cte = i_dict['class_test']
 
 	clf_au  = MT.get_Classifier(inputstr[0])(au[ft], au[ct])
 	clf_bow = MT.get_Classifier(inputstr[1])(bow[ft], bow[ct])
+
 
 	combined_vector = MT.post_process_audio(clf_au.predict(au[ft]))
 	res_bow = clf_bow.predict(bow[ft])
@@ -62,6 +64,9 @@ def run_ensemble(clf_tuple, bow, au, tst_count = TESTING_COUNT):
 def ensemble_test(train_size, inputstr):
 
 	bow, au = create_features(inputstr, tr_count = train_size)
+
+
+
 	ensemble_clf = build_ensemble(bow,au, inputstr, tr_count = train_size)
 	res =  run_ensemble(ensemble_clf,bow,au)
 
@@ -107,6 +112,7 @@ for _size in training_set:
 		for count in range(len(size_dict[_size]) , run_num):
 			print count
 			size_dict[_size].append(ensemble_test(_size, tst))
+			exit()
 			pickle.dump(size_dict, open(inputstr, 'w'))
 
 	else:

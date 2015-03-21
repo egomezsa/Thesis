@@ -1,4 +1,4 @@
-# 2015.03.20 20:34:37 CST
+
 import numpy as np
 from collections import Counter
 from sklearn import svm
@@ -122,6 +122,7 @@ def extract_features_Audio(sampled_dict, training_count, testing_count, tst, seg
     class_vector = []
     test_vector = [None]
     test_class = []
+
     for em in EMOTION_LIST:
         count = 0
         for fname in sampled_dict[em]:
@@ -137,12 +138,13 @@ def extract_features_Audio(sampled_dict, training_count, testing_count, tst, seg
                     test_vector = sampled_seg
                 else:
                     test_vector = np.concatenate((test_vector, sampled_seg))
-                test_class += [em]
-            elif None in feature_vector:
-                feature_vector = sampled_seg
+                test_class += [em] * seg_numb
             else:
-                feature_vector = np.concatenate((feature_vector, sampled_seg))
-            class_vector += [em] * seg_numb
+	            if None in feature_vector:
+	                feature_vector = sampled_seg
+	            else:
+	                feature_vector = np.concatenate((feature_vector, sampled_seg))
+	            class_vector += [em] * seg_numb
             f.close()
 
 
@@ -150,10 +152,8 @@ def extract_features_Audio(sampled_dict, training_count, testing_count, tst, seg
         print 'Normalizing'
         feature_vector = preprocessing.MinMaxScaler().fit_transform(feature_vector)
         test_vector = preprocessing.MinMaxScaler().fit_transform(test_vector)
-    return (feature_vector,
-     class_vector,
-     test_vector,
-     test_class)
+    
+    return (feature_vector,class_vector,test_vector,test_class)
 
 
 
@@ -186,7 +186,6 @@ def get_Classifier(str):
 
 
 def simple_SVM_train(feature_vector, class_vector, kernel_type = histogram_intersection_kernel):
-    print kernel_type
     clf = svm.SVC(kernel=kernel_type, max_iter=1000, verbose=False, cache_size=1000)
     clf.fit(feature_vector, class_vector)
     return clf
