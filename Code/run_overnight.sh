@@ -2,7 +2,7 @@
 
 
 echo "Running audio only"
-python audioNB.py S
+# python audioNB.py S
 python audioNB.py G
 python audioNB.py M
 
@@ -28,8 +28,6 @@ echo "Running partial only"
 python PartialEnsamble.py GG
 python PartialEnsamble.py GM
 python PartialEnsamble.py GS
-python PartialEnsamble.py SS
-python PartialEnsamble.py SM
 python PartialEnsamble.py MM
 python PartialEnsamble.py MG
 python PartialEnsamble.py MS

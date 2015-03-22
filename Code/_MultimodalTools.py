@@ -19,6 +19,10 @@ new_training_string = '************* NEW NUMBER OF ITERATIONS **********  '
 
 def histogram_intersection_kernel(X, Y = None, alpha = None, beta = None):
     """
+    Source: https://github.com/kuantkid/scikit-learn/commit/16c82d8f2fe763df7bfee9bbcc40016fb84affcf
+    Author: kuantkid
+    Date: Nov 20, 2012
+
     Compute the histogram intersection kernel(min kernel) 
     between X and Y::
         K(x, y) = \\sum_i^n min(|x_i|^\x07lpha, |y_i|^\x08eta)
@@ -138,7 +142,7 @@ def extract_features_Audio(sampled_dict, training_count, testing_count, tst, seg
                     test_vector = sampled_seg
                 else:
                     test_vector = np.concatenate((test_vector, sampled_seg))
-                test_class += [em] * seg_numb
+                test_class += [em]
             else:
 	            if None in feature_vector:
 	                feature_vector = sampled_seg
