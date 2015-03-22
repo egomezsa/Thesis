@@ -1,11 +1,24 @@
 import numpy as np
 import pickle
+import os
 import sys
 
 
-tst_size = 300
-_size = int(sys.argv[2])
-a = pickle.load(open(sys.argv[1], 'r'))
-avgs =  np.diag(np.mean(a[_size], axis=0))/tst_size
+directory = os.listdir('.')
 
-print (avgs, np.mean(avgs))
+tst_size = 300
+_size = int(sys.argv[1])
+
+writef = open('out.csv', 'w')
+for f in directory:
+    if 'py' in f or 'csv' in f:
+        continue
+    else:
+        print f
+        a = pickle.load(open(f,'r'))
+        avgs = np.diag(np.mean(a[_size],axis=0))/tst_size
+        print avgs
+        writef.write(f[:-2] + ', ' +str(avgs[0]) +  ', ' + str(avgs[1]) + ', ' + str(avgs[2]) + '\n')
+
+writef.close()
+
