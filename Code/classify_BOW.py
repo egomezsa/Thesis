@@ -9,7 +9,7 @@ import pprint
 DATA_PATH = '../pfiles/'
 EMOTION_LIST = ['happy', 'sad','angry']
 VECTOR_SIZE = 5000
-TEST_SAMPLES = 300
+TEST_SAMPLES = 100
 new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 
 i_dict = {'feature_train': 0, 'class_train': 1, 'feature_test': 2, 'class_test' : 3}
@@ -71,7 +71,7 @@ else:
 	inputstr = './run/BOW_'  + sys.argv[1] + '.p'
 
 
-training_set = [20, 50, 100, 500]
+training_set = [800]
 
 
 if os.path.exists(inputstr):

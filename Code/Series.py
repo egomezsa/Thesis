@@ -98,7 +98,7 @@ else:
 	tst = sys.argv[1]
 	inputstr = './run/Series_'  + sys.argv[1] + '.p'
 
-training_set = [20, 50, 100, 500]
+training_set = [20, 50, 100, 500, 1000]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))
@@ -121,7 +121,7 @@ for _size in training_set:
 	else:
 		size_dict[_size] = []
 
-		for count in range(30):
+		for count in range(run_num):
 			print count
 			size_dict[_size].append(series_test(_size, tst))
 			pickle.dump(size_dict, open(inputstr, 'w'))

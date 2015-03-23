@@ -7,7 +7,7 @@ from collections import Counter
 import pickle
 
 TRAINING_COUNT = 100
-TESTING_COUNT = 300
+TESTING_COUNT = 100
 EMOTION_LIST = ['happy', 'sad','angry']
 
 i_dict = {'feature_train': 0, 'class_train': 1, 'feature_test': 2, 'class_test' : 3}
@@ -94,7 +94,7 @@ else:
 	tst = sys.argv[1]
 	inputstr = './run/PartialEnsemble_'  + sys.argv[1] + '.p'
 
-training_set = [20, 50, 100, 500]
+training_set = [800]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))
@@ -117,7 +117,7 @@ for _size in training_set:
 	else:
 		size_dict[_size] = []
 
-		for count in range(30):
+		for count in range(run_num):
 			print count
 			size_dict[_size].append(ensemble_test(_size, tst))
 			pickle.dump(size_dict, open(inputstr, 'w'))

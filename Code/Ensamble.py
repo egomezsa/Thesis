@@ -117,7 +117,7 @@ for _size in training_set:
 	else:
 		size_dict[_size] = []
 
-		for count in range(30):
+		for count in range(run_num):
 			print count
 			size_dict[_size].append(ensemble_test(_size, tst))
 			pickle.dump(size_dict, open(inputstr, 'w'))
