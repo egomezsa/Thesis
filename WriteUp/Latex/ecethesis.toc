@@ -1,0 +1,11 @@
+\contentsline {chapter}{\ 1\hskip 1em\relax \MakeUppercase {INTRODUCTION}}{1}
+\contentsline {chapter}{\ 2\hskip 1em\relax \MakeUppercase {PREVIOUS WORK}}{3}
+\contentsline {section}{\numberline {2.1}Audio Sentiment Analysis}{3}
+\contentsline {section}{\numberline {2.2}Text Sentiment Analysis}{3}
+\contentsline {section}{\numberline {2.3}Multimodal Classification}{4}
+\contentsline {chapter}{\ 3\hskip 1em\relax \MakeUppercase {Motivation}}{6}
+\contentsline {chapter}{\ 4\hskip 1em\relax \MakeUppercase {EXPERIMENT}}{7}
+\contentsline {chapter}{\ 5\hskip 1em\relax \MakeUppercase {RESULTS}}{9}
+\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {ANALYSIS}}{11}
+\contentsline {chapter}{\ 7\hskip 1em\relax \MakeUppercase {CONCLUSIONS}}{13}
+\contentsline {chapter}{\ 8\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{14}
