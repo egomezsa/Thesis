@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  24 MAR 2015 23:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  2 APR 2015 20:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -324,27 +324,31 @@ Underfull \vbox (badness 10000) detected at line 58
  8.
 ) [14
 
-]
-No file ecethesis.bbl.
-(./ecethesis.aux (./intro.aux) (./exper.aux) (./concl.aux)) ) 
+] (./ecethesis.bbl) [15
+
+
+
+] (./ecethesis.aux (./intro.aux) (./exper.aux)
+(./concl.aux)) ) 
 Here is how much of TeX's memory you used:
- 3489 strings out of 493315
- 52110 string characters out of 6137904
- 115617 words of memory out of 5000000
- 6883 multiletter control sequences out of 15000+600000
- 9493 words of font info for 34 fonts, out of 8000000 for 9000
+ 3505 strings out of 493315
+ 52364 string characters out of 6137904
+ 115629 words of memory out of 5000000
+ 6896 multiletter control sequences out of 15000+600000
+ 9840 words of font info for 35 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,5n,38p,850b,227s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
-2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/20
-13/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2013
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb>
-Output written on ecethesis.pdf (17 pages, 99992 bytes).
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sl10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+l12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+12.pfb>
+Output written on ecethesis.pdf (18 pages, 115047 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
