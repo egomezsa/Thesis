@@ -4,6 +4,7 @@ import pprint
 import os
 import _MultimodalTools as MT
 from collections import Counter
+import datetime
 import pickle
 
 TRAINING_COUNT = 100
@@ -17,8 +18,8 @@ new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 
 def create_features(tst, tr_count = TRAINING_COUNT, tst_count = TESTING_COUNT):
 	sample_dict = MT.create_sample_dict(tr_count, tst_count)
-	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst, seg_numb = SEG_NUMB_AUD, normalize= 'M' in tst)
+	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 
 	trn = i_dict['feature_train']
 	tst = i_dict['feature_test']
@@ -43,7 +44,7 @@ def build_series(vects, tst, tr_count = TRAINING_COUNT):
 	ft = i_dict['feature_train']
 	ct = i_dict['class_train']
 
-	clf = MT.get_Classifier(tst[0])(vects[ft], vects[ct])
+	clf = MT.get_Classifier(tst[0])(vects[ft], vects[ct], kernel_type="linear")
 
 	return clf
 
@@ -69,6 +70,7 @@ def run_series(clf, vects, tst_count = TESTING_COUNT):
 
 
 def series_test(train_size, tst):
+	print datetime.datetime.now().time()
 	vects = create_features(tst, tr_count = train_size)
 	series_clf = build_series(vects,  tst, tr_count = train_size)
 	res =  run_series(series_clf,vects)
@@ -86,6 +88,7 @@ def series_test(train_size, tst):
 		correct_ma[pred_indx,true_indx] += 1
 
 	print correct_ma
+	print datetime.datetime.now().time()
 	return  correct_ma
 
 
@@ -98,7 +101,7 @@ else:
 	tst = sys.argv[1]
 	inputstr = './run/Series_'  + sys.argv[1] + '.p'
 
-training_set = [20, 50, 100, 500, 1000]
+training_set = [500]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))

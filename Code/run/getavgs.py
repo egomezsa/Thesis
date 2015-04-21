@@ -11,14 +11,14 @@ _size = int(sys.argv[1])
 
 writef = open('out.csv', 'w')
 for f in directory:
-    if 'py' in f or 'csv' in f:
+    if 'py' in f or 'csv' in f or 'back' in f:
         continue
     else:
         print f
         a = pickle.load(open(f,'r'))
         avgs = np.diag(np.mean(a[_size],axis=0))/tst_size
-        print avgs
-        writef.write(f[:-2] + ', ' +str(avgs[0]) +  ', ' + str(avgs[1]) + ', ' + str(avgs[2]) + '\n')
+        print avgs, np.mean(avgs)
+        writef.write(f[:-2] + ', ' +str(avgs[0]) +  ', ' + str(avgs[1]) + ', ' + str(avgs[2]) + 'Total: ' + str(np.mean(avgs)) + '\n')
 
 writef.close()
 

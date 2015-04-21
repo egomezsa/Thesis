@@ -16,28 +16,56 @@ new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 
 def create_features(tst, tr_count = TRAINING_COUNT, tst_count = TESTING_COUNT):
 	sample_dict = MT.create_sample_dict(tr_count, tst_count)
-	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst, normalize = 'M' in tst[0])
+	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 	return ((bow_tup,au_tup))
 
 def build_ensemble(bow, au,  tst, tr_count = TRAINING_COUNT):
 	ft = i_dict['feature_train']
 	ct = i_dict['class_train']
 
-	clf_au  = MT.get_Classifier(tst[0])(au[ft], au[ct])
 
-	audio_post = MT.post_process_audio(clf_au.predict(au[ft]))
+	mode = int(tst[2])
 
-	combined_vector = np.zeros((len(audio_post),len(EMOTION_LIST) + bow[ft].shape[1]))
+	ensemble_clf = None
+	other_clf = None
 
-	for i in range(len(audio_post)):
-		combined_vector[i,:] = np.concatenate((np.array(audio_post[i]), bow[ft][i]))
+	print 'Mode: ' + str(mode)
+
+	if mode == 1 : 
+
+		other_clf  = MT.get_Classifier(tst[0])(au[ft], au[ct],'linear')
+
+		audio_post = MT.post_process_audio(other_clf.predict(au[ft]))
+
+		combined_vector = np.zeros((len(audio_post),len(EMOTION_LIST) + bow[ft].shape[1]))
+
+		for i in range(len(audio_post)):
+			combined_vector[i,:] = np.concatenate((np.array(audio_post[i]), bow[ft][i]))
 
 
-	ensemble_clf =  MT.get_Classifier(tst[1])(combined_vector,bow[ct])
+		ensemble_clf =  MT.get_Classifier(tst[1])(combined_vector,bow[ct])
+
+	else:
+
+		other_clf = MT.get_Classifier(tst[0])(bow[ft], bow[ct])
+		res_bow = np.array(other_clf.predict_proba(bow[ft]))
+
+		combined_vector = np.zeros(( au[ft].shape[0], len(EMOTION_LIST) + au[ft].shape[1] ))
+		
+		segment_size = au[ft].shape[0] / bow[ft].shape[0]
+
+		for i in range(res_bow.shape[0]):
+			sample_range = np.arange(i*segment_size, i*segment_size+segment_size)
+			au_seg = au[ft][sample_range,:]
+			bow_temp =  np.repeat(res_bow[i,:][:,None],segment_size,axis=1).T
+			combined_vector[sample_range,:] = np.concatenate( (au_seg,bow_temp), axis = 1)
 
 
-	return (ensemble_clf, clf_au)
+		ensemble_clf = MT.get_Classifier(tst[1])(combined_vector, au[ct],'linear')
+
+
+	return (ensemble_clf, other_clf)
 
 def run_ensemble(clf_tuple, bow, au, tst_count = TESTING_COUNT):
 
@@ -45,17 +73,48 @@ def run_ensemble(clf_tuple, bow, au, tst_count = TESTING_COUNT):
 	ct = i_dict['class_test']
 
 	clf_en = clf_tuple[0]
-	clf_au = clf_tuple[1]
+	clf_other = clf_tuple[1]
 
 
-	audio_post = MT.post_process_audio(clf_au.predict(au[ft]))
+	mode = int(tst[2])
 
-	combined_vector = np.zeros((len(audio_post),len(EMOTION_LIST) + bow[ft].shape[1]))
+	combined_vector = None
 
-	for i in range(len(audio_post)):
-		combined_vector[i,:] = np.concatenate((np.array(audio_post[i]), bow[ft][i]))
+	if mode == 1 :
 
-	return clf_en.predict(combined_vector)
+		audio_post = MT.post_process_audio(clf_other.predict(au[ft]))
+
+		combined_vector = np.zeros((len(audio_post),len(EMOTION_LIST) + bow[ft].shape[1]))
+
+		for i in range(len(audio_post)):
+			combined_vector[i,:] = np.concatenate((np.array(audio_post[i]), bow[ft][i]))
+
+		return clf_en.predict(combined_vector)
+
+	else: 
+
+		res_bow = np.array(clf_other.predict_proba(bow[ft]))
+		combined_vector = np.zeros(( au[ft].shape[0], len(EMOTION_LIST) + au[ft].shape[1] ))
+		
+		segment_size = au[ft].shape[0] / bow[ft].shape[0]
+
+		for i in range(res_bow.shape[0]):
+			sample_range = np.arange(i*segment_size, i*segment_size+segment_size)
+			au_seg = au[ft][sample_range,:]
+			bow_temp =  np.repeat(res_bow[i,:][:,None],segment_size,axis=1).T
+			combined_vector[sample_range,:] = np.concatenate( (au_seg,bow_temp), axis = 1)
+
+		res =  clf_en.predict(combined_vector)
+		
+		predictions = [] 
+
+
+		for i in range(0, len(res), segment_size):
+			count = Counter(res[i:i+segment_size])		
+			if len(count.most_common()) > 0:
+				predictions.append(count.most_common(1)[0][0])	
+
+		return predictions
 
 
 def ensemble_test(train_size, tst):
@@ -65,24 +124,23 @@ def ensemble_test(train_size, tst):
 
 
 
+
 	true_arr = bow[i_dict['class_test']]
 	correct_ma = np.zeros((3,3))
 
 	count = 0 
 	runsum = 0 
+
 	for r_i in range(len(res)):
-
-
 		pred_indx = EMOTION_LIST.index(res[r_i])
 		true_indx = EMOTION_LIST.index(true_arr[r_i])
-
 		correct_ma[pred_indx,true_indx] += 1
 
-		# if r in EMOTION_LIST[r_i / TESTING_COUNT]:
-		# 	correct_lst[indx] += 1
-		# 	count += 1
+
 
 	print correct_ma	
+
+	exit()
 	return  correct_ma
 
 
@@ -94,7 +152,7 @@ else:
 	tst = sys.argv[1]
 	inputstr = './run/PartialEnsemble_'  + sys.argv[1] + '.p'
 
-training_set = [800]
+training_set = [20]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))

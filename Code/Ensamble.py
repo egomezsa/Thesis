@@ -16,8 +16,8 @@ new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 
 def create_features(tst, tr_count = TRAINING_COUNT, tst_count = TESTING_COUNT):
 	sample_dict = MT.create_sample_dict(tr_count, tst_count)
-	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst, normalize = 'M' in tst[0])
+	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 	return ((bow_tup,au_tup))
 
 def build_ensemble(bow, au, inputstr, tr_count = TRAINING_COUNT):
@@ -27,16 +27,18 @@ def build_ensemble(bow, au, inputstr, tr_count = TRAINING_COUNT):
 	cte = i_dict['class_test']
 
 	clf_au  = MT.get_Classifier(inputstr[0])(au[ft], au[ct])
-	clf_bow = MT.get_Classifier(inputstr[1])(bow[ft], bow[ct])
+	clf_bow = MT.get_Classifier(inputstr[1])(bow[ft], bow[ct], "histogram" if "S" in inputstr[1] else "")
 
 
 	combined_vector = MT.post_process_audio(clf_au.predict(au[ft]))
-	res_bow = clf_bow.predict(bow[ft])
+	res_bow = np.array(clf_bow.predict_proba(bow[ft]))
+	# res_bow = res_bow / np.linalg.norm(res_bow, axis=1)[:,None]
+	
 
-	for i in range(len(combined_vector)):
-		combined_vector[i].append(EMOTION_LIST.index(res_bow[i]))
+	combined_vector = np.concatenate((np.array(res_bow), np.array(combined_vector)), axis=1)
 
-	ensemble_clf =  MT.get_Classifier(inputstr[2])(combined_vector,bow[ct])
+
+	ensemble_clf =  MT.get_Classifier(inputstr[2])(combined_vector,bow[ct],"histogram" if "S" in inputstr[2] else "")
 
 	return (ensemble_clf,clf_bow, clf_au)
 
@@ -51,10 +53,14 @@ def run_ensemble(clf_tuple, bow, au, tst_count = TESTING_COUNT):
 
 
 	combined_vector = MT.post_process_audio(clf_au.predict(au[ft]))
-	res_bow = clf_bow.predict(bow[ft])
+	res_bow = clf_bow.predict_proba(bow[ft])
+	# res_bow = res_bow / np.linalg.norm(res_bow, axis=0)[:,None]
+	
+	combined_vector = np.concatenate((np.array(res_bow), np.array(combined_vector)), axis=1)
 
-	for i in range(len(combined_vector)):
-		combined_vector[i].append(EMOTION_LIST.index(res_bow[i]))
+
+	# for i in range(len(combined_vector)):
+	# 	combined_vector[i].append(EMOTION_LIST.index(res_bow[i]))
 
 
 	res =  clf_en.predict(combined_vector)
@@ -94,7 +100,7 @@ else:
 	inputstr = './run/Ensemble_'  + sys.argv[1] + '.p'
 
 
-training_set = [20, 50, 100, 500]
+training_set = [500]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))

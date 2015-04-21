@@ -14,7 +14,7 @@ DATA_PATH_ExHD = '/Volumes/My Passport for Mac/FinalDataset/'
 DATA_PATH_BOW = '../pfiles/'
 EMOTION_LIST = ['happy', 'sad', 'angry']
 SEG_NUMB_AUD = 100
-VECTOR_SIZE_BOW = 5000
+VECTOR_SIZE_BOW = 1000
 new_training_string = '************* NEW NUMBER OF ITERATIONS **********  '
 
 def histogram_intersection_kernel(X, Y = None, alpha = None, beta = None):
@@ -83,37 +83,52 @@ def extract_features_BOW(sampled_dict, training_count, testing_count, tst, norma
     test_vector = np.zeros((len(EMOTION_LIST) * testing_count, VECTOR_SIZE_BOW))
     class_vector = []
     test_class = []
+    skipped = False
     for em in EMOTION_LIST:
         emotion_dict = pickle.load(open(DATA_PATH_BOW + em + '_BOW.p', 'r'))
         vectors = np.zeros((training_count + testing_count, VECTOR_SIZE_BOW))
         count = 0
         for song in sampled_dict[em]:
-            v = np.zeros((VECTOR_SIZE_BOW,))
-            for m in emotion_dict[song]:
-                if ':' in m:
-                    tok = m.split(':')
-                    indx = int(tok[0])
-                    wordcount = int(tok[1])
-                    if int(tok[0]) < VECTOR_SIZE_BOW:
-                        v[indx] = wordcount
-
-            vectors[count, :] = v
-            if count < testing_count:
-                test_class += [em]
+            skipped = False
+            if 'False' in song:
+                print 'skipped'
+                skipped = True
+                vectors[count,:] = np.zeros((VECTOR_SIZE_BOW,))
             else:
-                class_vector += [em]
+
+                v = np.zeros((VECTOR_SIZE_BOW,))
+                for m in emotion_dict[song]:
+                    if ':' in m:
+                        tok = m.split(':')
+                        indx = int(tok[0])
+                        wordcount = int(tok[1])
+                        if int(tok[0]) < VECTOR_SIZE_BOW:
+                            v[indx] = wordcount
+                vectors[count, :] = v
+
+            if count < testing_count:
+                test_class += ["None" if skipped else em]
+            else:
+                class_vector += ["None" if skipped else em]
             count += 1
 
         indx = EMOTION_LIST.index(em)
         offset_tr = training_count * indx
         offset_tst = testing_count * indx
         feature_vector[(0 + offset_tr):(training_count + offset_tr), :] = vectors[0:training_count, :]
-        test_vector[(0 + offset_tst):(testing_count + offset_tst), :] = vectors[training_count:, :]
+        test_vector[(0 + offset_tst):(testing_count + offset_tst ), :] = vectors[training_count:, :]
 
     if normalize:
         print 'Normalizing'
         feature_vector = preprocessing.MinMaxScaler().fit_transform(feature_vector)
         test_vector = preprocessing.MinMaxScaler().fit_transform(test_vector)
+
+
+
+    # print (feature_vector.shape, len(class_vector), test_vector.shape, len(test_class))
+
+
+
     return (feature_vector,
      class_vector,
      test_vector,
@@ -132,23 +147,39 @@ def extract_features_Audio(sampled_dict, training_count, testing_count, tst, seg
         for fname in sampled_dict[em]:
             f = read_hdf5(DATA_PATH_ExHD + em + '/' + fname + '.h5')
             if not f:
-                continue
-            seg = hdf.get_segments_timbre(f)
-            seg_indx = random_index(seg.shape[0] - 1, seg_numb)
-            sampled_seg = seg[seg_indx, :]
-            count += 1
-            if count > training_count:
-                if None in test_vector:
-                    test_vector = sampled_seg
+
+                sampled_seg = np.zeros((seg_numb,12))
+                count += 1
+                if count > training_count:
+                    if None in test_vector:
+                        test_vector = sampled_seg
+                    else:
+                        test_vector = np.concatenate((test_vector, sampled_seg))
+                    test_class += ['None']
                 else:
-                    test_vector = np.concatenate((test_vector, sampled_seg))
-                test_class += [em]
-            else:
-	            if None in feature_vector:
-	                feature_vector = sampled_seg
-	            else:
-	                feature_vector = np.concatenate((feature_vector, sampled_seg))
-	            class_vector += [em] * seg_numb
+                    if None in feature_vector:
+                        feature_vector = sampled_seg
+                    else:
+                        feature_vector = np.concatenate((feature_vector, sampled_seg))
+                    class_vector += ['None'] * seg_numb
+                continue
+            else: 
+                seg = hdf.get_segments_timbre(f)
+                seg_indx = random_index(seg.shape[0] - 1, seg_numb)
+                sampled_seg = seg[seg_indx, :]
+                count += 1
+                if count > training_count:
+                    if None in test_vector:
+                        test_vector = sampled_seg
+                    else:
+                        test_vector = np.concatenate((test_vector, sampled_seg))
+                    test_class += [em]
+                else:
+    	            if None in feature_vector:
+    	                feature_vector = sampled_seg
+    	            else:
+    	                feature_vector = np.concatenate((feature_vector, sampled_seg))
+    	            class_vector += [em] * seg_numb
             f.close()
 
 
@@ -157,6 +188,8 @@ def extract_features_Audio(sampled_dict, training_count, testing_count, tst, seg
         feature_vector = preprocessing.MinMaxScaler().fit_transform(feature_vector)
         test_vector = preprocessing.MinMaxScaler().fit_transform(test_vector)
     
+    # print (feature_vector.shape, len(class_vector), test_vector.shape, len(test_class))
+
     return (feature_vector,class_vector,test_vector,test_class)
 
 
@@ -189,8 +222,15 @@ def get_Classifier(str):
 
 
 
-def simple_SVM_train(feature_vector, class_vector, kernel_type = histogram_intersection_kernel):
-    clf = svm.SVC(kernel=kernel_type, max_iter=1000, verbose=False, cache_size=1000)
+def simple_SVM_train(feature_vector, class_vector, kernel_type =  "histogram"):
+    
+    if "histogram" in kernel_type:
+        print kernel_type
+        kernel_type  = histogram_intersection_kernel
+    else: 
+        print kernel_type
+
+    clf = svm.SVC(kernel=kernel_type, max_iter=1000, verbose=False, probability=True, cache_size=1000)
     clf.fit(feature_vector, class_vector)
     return clf
 
