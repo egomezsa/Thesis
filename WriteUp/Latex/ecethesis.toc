@@ -3,10 +3,17 @@
 \contentsline {section}{\numberline {2.1}Audio Sentiment Analysis}{3}
 \contentsline {section}{\numberline {2.2}Text Sentiment Analysis}{3}
 \contentsline {section}{\numberline {2.3}Multimodal Classification}{4}
-\contentsline {chapter}{\ 3\hskip 1em\relax \MakeUppercase {Motivation}}{6}
-\contentsline {chapter}{\ 4\hskip 1em\relax \MakeUppercase {EXPERIMENT}}{7}
-\contentsline {chapter}{\ 5\hskip 1em\relax \MakeUppercase {RESULTS}}{9}
-\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {ANALYSIS}}{11}
-\contentsline {chapter}{\ 7\hskip 1em\relax \MakeUppercase {CONCLUSIONS}}{13}
-\contentsline {chapter}{\ 8\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{14}
-\contentsline {chapter}{\MakeUppercase {REFERENCES}}{15}
+\contentsline {chapter}{\ 3\hskip 1em\relax \MakeUppercase {METHOD}}{6}
+\contentsline {section}{\numberline {3.1}Features Used}{6}
+\contentsline {section}{\numberline {3.2}Classifiers}{7}
+\contentsline {subsection}{\numberline {3.2.1}Naive Bayes}{7}
+\contentsline {subsection}{\numberline {3.2.2}Support Vector Machines}{8}
+\contentsline {section}{\numberline {3.3}Fusion Methods}{9}
+\contentsline {subsection}{\numberline {3.3.1}Series Fusion}{10}
+\contentsline {subsection}{\numberline {3.3.2}Audio Partial Ensemble}{10}
+\contentsline {subsection}{\numberline {3.3.3}Lyric Partial Ensemble}{11}
+\contentsline {subsection}{\numberline {3.3.4}Full Ensemble}{11}
+\contentsline {chapter}{\ 4\hskip 1em\relax \MakeUppercase {EXPERIMENT}}{13}
+\contentsline {chapter}{\ 5\hskip 1em\relax \MakeUppercase {RESULTS}}{15}
+\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{17}
+\contentsline {chapter}{\MakeUppercase {REFERENCES}}{18}

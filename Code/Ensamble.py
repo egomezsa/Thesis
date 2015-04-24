@@ -7,7 +7,7 @@ from collections import Counter
 import pickle
 
 TRAINING_COUNT = 100
-TESTING_COUNT = 300
+TESTING_COUNT = 100
 EMOTION_LIST = ['happy', 'sad','angry']
 
 i_dict = {'feature_train': 0, 'class_train': 1, 'feature_test': 2, 'class_test' : 3}
@@ -27,7 +27,7 @@ def build_ensemble(bow, au, inputstr, tr_count = TRAINING_COUNT):
 	cte = i_dict['class_test']
 
 	clf_au  = MT.get_Classifier(inputstr[0])(au[ft], au[ct])
-	clf_bow = MT.get_Classifier(inputstr[1])(bow[ft], bow[ct], "histogram" if "S" in inputstr[1] else "")
+	clf_bow = MT.get_Classifier(inputstr[1])(bow[ft], bow[ct])
 
 
 	combined_vector = MT.post_process_audio(clf_au.predict(au[ft]))
@@ -38,7 +38,7 @@ def build_ensemble(bow, au, inputstr, tr_count = TRAINING_COUNT):
 	combined_vector = np.concatenate((np.array(res_bow), np.array(combined_vector)), axis=1)
 
 
-	ensemble_clf =  MT.get_Classifier(inputstr[2])(combined_vector,bow[ct],"histogram" if "S" in inputstr[2] else "")
+	ensemble_clf =  MT.get_Classifier(inputstr[2])(combined_vector,bow[ct])
 
 	return (ensemble_clf,clf_bow, clf_au)
 
@@ -81,6 +81,10 @@ def ensemble_test(train_size, inputstr):
 
 	for r_i in range(len(res)):
 
+		if 'None' in (res[r_i]) or 'None' in true_arr[r_i]:
+			print 'skipped'
+			continue
+
 		pred_indx = EMOTION_LIST.index(res[r_i])
 		true_indx = EMOTION_LIST.index(true_arr[r_i])
 
@@ -100,7 +104,7 @@ else:
 	inputstr = './run/Ensemble_'  + sys.argv[1] + '.p'
 
 
-training_set = [500]
+training_set = [20, 50, 100, 500]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))

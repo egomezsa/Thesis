@@ -8,7 +8,7 @@ import datetime
 import pickle
 
 TRAINING_COUNT = 100
-TESTING_COUNT = 300
+TESTING_COUNT = 100
 SEG_NUMB_AUD = 50
 EMOTION_LIST = ['happy', 'sad','angry']
 
@@ -82,6 +82,10 @@ def series_test(train_size, tst):
 
 	for r_i in range(len(res)):
 
+		if 'None' in (res[r_i]) or 'None' in true_arr[r_i]:
+			print 'skipped'
+			continue
+
 		pred_indx = EMOTION_LIST.index(res[r_i])
 		true_indx = EMOTION_LIST.index(true_arr[r_i])
 
@@ -101,7 +105,7 @@ else:
 	tst = sys.argv[1]
 	inputstr = './run/Series_'  + sys.argv[1] + '.p'
 
-training_set = [500]
+training_set = [20, 50, 100, 500]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))

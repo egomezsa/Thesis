@@ -15,16 +15,26 @@ is a challenging problem. Most human subjects agree in broad
 strokes on emotional classifications. However it is not uncommon
  to find media inputs where there is no consensus, leading to 
  inconsistencies in class groupings. As a result, sentiment analysis 
- is challenging to incorporate into real-world applications 
- because an algorithm's recognition accuracy might differ between classes. 
- 
+ is still an open problem that requires the investigation of alternative methods that 
+ employ different modalities to counteract class inconsistencies.  Success in 
+ this approach would allow a more robust classification algorithm 
+ that is better suited for real-world applications.
+  
   The motivation behind this research is to find a method that accounts for 
   these inter-class inconsistencies across a large dataset.  During initial 
   testing it became apparent that certain classifiers perform well on specific 
   sentiments and fail to learn features that represent others. This 
   research seeks to account for this difference by combining the classifiers 
   to output classifications in a  more consistent manner, thus improving the 
-  reliability of the overall system. 
+  reliability of the overall system.
+  
+  This paper will be focusing on the employment of Support Vector Machines (SVM), 
+  Gaussian Naive Bayes and Multinomial Naive Bayes classifiers to recognize
+  emotional information.  The features that will be employed are MFCC-like 
+  vectors obtained from the response of the song's windowed spectrogram 
+  to different base functions to  represent the audio portion of the song and 
+  a bag of words vector that contains the lyric information of the song.  The modal 
+  fusion will be tested through both feature fusion and classifier fusion.
   
   The dataset used for this paper is called the Million Song Dataset, and 
   was compiled by Labrosa \cite{Bertin-Mahieux2011}. This dataset contains a million different songs
@@ -38,9 +48,9 @@ strokes on emotional classifications. However it is not uncommon
   on the impact of semantics on sentiment classification. 
       
  This document starts with a brief overview of previous work performed on this 
- topic, followed by a description of the algorithms developed for the experiments, 
- then a section containing results and corresponding analysis and closes 
- with conclusions and suggestions for future work.
+ topic, followed by a description of the methods and the algorithms developed,
+ then a section detailing the actual experiments, followed by the results and corresponding analysis
+ and closes with suggestions for future work.
  
  \chapter{PREVIOUS WORK}
 
@@ -56,47 +66,49 @@ Analysis, Text Sentiment Analysis and Multimodal Classification.
 The study of the relationship between emotional content and audio signals is a 
 very mature field. Researchers have expanded on the success found in the 
 speech recognition community while using Mel-Frequency Cepstral Components 
-(MFCC) to explore their uses in music modeling [I.A]. MFCCs are currently a 
+(MFCC) to explore their uses in music modeling \cite{Logan00melfrequency}. MFCCs are currently a 
 staple in audio processing and are commonly used in MIR applications such 
-as genre classification [I.B], since it is a quantifiable method for comparing the 
-timbral texture of songs. Timbre has been successfully used to classify the 
-emotional content of songs [I.C]. It has also been used to generate 
-songs that evoke particular emotions \cite{transprose}.  These vectors have been commonly 
-classified using Support Vector Machines (SVM) and Naive Bayes classifiers. The 
-dataset used for these experiments is the Million Song Dataset (MSDS) \cite{Bertin-Mahieux2011} 
-since metadata provided is intended for MIR research. The audio features 
-used were the MFCC-like timbre vectors provided by EchoNest in the MSDS. 
+as genre classification \cite{Tzanetakis01automaticmusical}, since it is a quantifiable method for comparing the 
+timbral texture of songs. Timbre has been used with some success to classify the 
+emotional content of songs \cite{University03detectingemotion}, however class inconsistencies proved to be 
+a difficult challenge that create substantial misclassification between edge cases. 
+Timbre has also been used to generate songs that evoke particular emotions \cite{transprose}.  
+These vectors have been commonly classified using 
+Support Vector Machines (SVM) and Naive Bayes classifiers. 
 
 \section{Text Sentiment Analysis}
 
 Similarly the study of the relationship between text and emotional content is quite 
 developed. From predicting Yelp ratings based on the sentiment expressed on the 
-review [II.A]  to extracting the emotional progression of major literary pieces \cite{transprose}.  
+review \cite{YelpReview}  to extracting the emotional progression of major literary pieces \cite{transprose}.  
 There are many methods to represent and extract emotional information from texts. 
 The Yelp experiment uses statistical word vectors to capture word semantics and 
 emotions as a probability.  Other researchers have represented textual information in 
 a bag-of-features framework and classified them using Naive Bayes, SVMs and 
-Maximum Entropy classifiers to recognize positive or negative valances (II.B).  
+Maximum Entropy classifiers to recognize positive or negative valances \cite{Pang:2002:TUS:1118693.1118704}.  
 
 Capturing the semantic nuisances has also been an area of great interest, which is 
 the study of how a given word might have different emotional value depending on its 
 context. This level of analysis requires the creation of complex sentiment vectors 
-that encode how meanings change based on semantics [II.C].  Similarly researchers 
-have improved classification accuracy by preprocessing text [II.D], and use the 
+that encode how meanings change based on semantics \cite{Maas:2011:LWV:2002472.2002491}.  Similarly researchers 
+have improved classification accuracy by preprocessing text \cite{Haddi201326}, and use the 
 cleaned data to capture emotional subtleties like the use of negation and modifiers 
-to emotional words [II.E]. 
+to emotional words \cite{Xia_sentimentvector}. 
 
 Although there is a great body of research on how to obtain rich sentiment vectors 
-from the text, the goal of this paper is demonstrate the added advantage of a 
-multimodal approach. As a result, the features used will be the bag-of-words vector 
-provided by the musicXatch dataset \cite{musicXmatchDataset}.
+from text, the goal of this paper is demonstrate the added advantage of a 
+multimodal approach.  For that end, the lyric vectors were kept simple to clearly
+underline the benefit of combining them with audio information.  In addition, it is necessary 
+to point out that obtaining a large enough dataset of lyrics is difficult due to legal restrictions.   
+As a result, the features used will be the unordered representation of the lyrics in 
+a bag-of-words vector provided by the musicXatch dataset \cite{musicXmatchDataset}.
 
 \section{Multimodal Classification}
 
 Multimodal classification is the task of using feature vectors from different spaces, 
 for example text and audio, to reach a single classification. There are two main 
 methods of combining the information from both vector spaces: feature fusion and 
-classifier fusion [III.A]. 
+classifier fusion \cite{zhonga2012music}. 
 
 Feature Fusion is the technique that takes signals from different 
 feature spaces and joins them to train a single multimodal classifier. The standard 
@@ -104,31 +116,28 @@ fusion method is called series fusion, which consists on concatenating the vecto
 together and training the classifier on the union of both spaces. Several alternatives 
 have been suggested to maintain the same amount of expressibility in the vector while 
 keeping the vector space as small as possible. Instead of concatenating the vectors 
-together, it is possible to join vectors in parallel [III.B] by making vectors from the linear
+together, it is possible to join vectors in parallel \cite{yang2003feature} by making vectors from the linear
 combinations of a real-valued feature with another complex-valued feature. The benefit 
 of the series fusion over the parallel method is that many diverse features can be fused
 together to obtain more robust data. As seen in the research by Liang et al., 
 genre classification was improved by joining five different vectors all resulting from 
-different preprocessing methods for text and audio vectors [III.C]. 
+different preprocessing methods for text and audio vectors \cite{liang2011music}. 
 
 Classifier fusions consists on training an array of unimodal classifiers and using some 
-function to consolidate the predictions [III.D]. This method seamlessly fuses features 
+function to consolidate the predictions \cite{ahmadian2013multi}. This method seamlessly fuses features 
 from very different spaces. Caridakis et al. combined facial expressions, body gestures 
 and speech by having a classifier voting system where the class with most votes and 
-higher probability was chosen amongst all the decisions [III.E]. The final decision-making 
+higher probability was chosen amongst all the decisions \cite{caridakis2007multimodal}. The final decision-making 
 process can be taken a step further by adding an additional classifier that learns from 
-the decisions provided from classifier array [III.F].  The algorithms presented on this 
+the decisions provided from classifier array \cite{li2008multi}.  The algorithms presented on this 
 paper were largely based on this last approach. 
 
 
-
-\chapter{Motivation}
-
 Multimodal classification has been successful in improving the accuracy of classification 
-[III.G, III.H].  However, some of the previous work either ran the experiments on highly homogenous 
+\cite{hu2010improving} \cite{zhonga2012music}.  However, some of the previous work either ran the experiments on highly homogenous 
 datasets where all the music was in the same language, belonged to the same genre or 
 were carefully classified by a single subject thus eliminating class inconsistencies.  The goal of 
 this research is to obtain improved classification and reliability from a varied dataset 
-through ensemble classifies. 
+through ensemble classifiers. 
 
 

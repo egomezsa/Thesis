@@ -16,7 +16,7 @@ new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 
 def create_features(tst, tr_count = TRAINING_COUNT, tst_count = TESTING_COUNT):
 	sample_dict = MT.create_sample_dict(tr_count, tst_count)
-	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst, normalize = 'M' in tst[0])
+	au_tup = MT.extract_features_Audio(sample_dict, tr_count, tst_count, tst, normalize = 'M' in tst)
 	bow_tup = MT.extract_features_BOW(sample_dict, tr_count, tst_count, tst)
 	return ((bow_tup,au_tup))
 
@@ -132,6 +132,11 @@ def ensemble_test(train_size, tst):
 	runsum = 0 
 
 	for r_i in range(len(res)):
+
+		if 'None' in (res[r_i]) or 'None' in true_arr[r_i]:
+			print 'skipped'
+			continue
+
 		pred_indx = EMOTION_LIST.index(res[r_i])
 		true_indx = EMOTION_LIST.index(true_arr[r_i])
 		correct_ma[pred_indx,true_indx] += 1
@@ -140,11 +145,10 @@ def ensemble_test(train_size, tst):
 
 	print correct_ma	
 
-	exit()
 	return  correct_ma
 
 
-tst = 'MM'
+tst = 'MM1'
 
 if len(sys.argv) < 2:
 	inputstr = './run/PartialEnsemble.p'
@@ -152,7 +156,7 @@ else:
 	tst = sys.argv[1]
 	inputstr = './run/PartialEnsemble_'  + sys.argv[1] + '.p'
 
-training_set = [20]
+training_set = [20, 50, 100, 500]
 
 if os.path.exists(inputstr):
 	size_dict = pickle.load(open(inputstr,'r'))

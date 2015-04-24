@@ -9,7 +9,7 @@ import pprint
 DATA_PATH = '../pfiles/'
 EMOTION_LIST = ['happy', 'sad','angry']
 VECTOR_SIZE = 5000
-TEST_SAMPLES = 300
+TEST_SAMPLES = 100
 new_training_string = "************* NEW NUMBER OF ITERATIONS **********  "
 
 i_dict = {'feature_train': 0, 'class_train': 1, 'feature_test': 2, 'class_test' : 3}
@@ -29,6 +29,10 @@ def post_process_results(results_arr, true_arr):
 	correct_ma = np.zeros((3,3))
 
 	for indx in range(len(results_arr)):
+
+		if 'None' in (results_arr[indx]) or 'None' in true_arr[indx]:
+			print 'skipped'
+			continue
 		
 		true_indx = EMOTION_LIST.index(true_arr[indx])
 		pred_indx = EMOTION_LIST.index(results_arr[indx])
@@ -56,7 +60,7 @@ def simple_train(training_set, tst):
 	test_values = au_features[i_dict['feature_test']]
 	test_class = au_features[i_dict['class_test']]
 
-	clf = MT.get_Classifier(tst[0])(feature_vector, class_vector)
+	clf = MT.get_Classifier(tst[0])(feature_vector, class_vector, 'linear')
 
 	# print 'Finished training classifier'
 

@@ -26,6 +26,10 @@ def post_process_results(results_arr, true_arr):
 	correct_ma = np.zeros((3,3))
 
 	for indx in range(len(results_arr)):
+
+		if 'None' in (results_arr[indx]) or 'None' in true_arr[indx]:
+			print 'skipped'
+			continue
 		
 		true_indx = EMOTION_LIST.index(true_arr[indx])
 		pred_indx = EMOTION_LIST.index(results_arr[indx])
@@ -71,7 +75,7 @@ else:
 	inputstr = './run/BOW_'  + sys.argv[1] + '.p'
 
 
-training_set = [800]
+training_set = [20, 50, 100, 500]
 
 
 if os.path.exists(inputstr):

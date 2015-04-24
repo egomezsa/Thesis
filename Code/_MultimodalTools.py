@@ -128,7 +128,6 @@ def extract_features_BOW(sampled_dict, training_count, testing_count, tst, norma
     # print (feature_vector.shape, len(class_vector), test_vector.shape, len(test_class))
 
 
-
     return (feature_vector,
      class_vector,
      test_vector,
@@ -236,14 +235,14 @@ def simple_SVM_train(feature_vector, class_vector, kernel_type =  "histogram"):
 
 
 
-def simple_GNB_train(feature_vector, class_vector, kernel = None):
+def simple_GNB_train(feature_vector, class_vector, kernel_type = None):
     clf = GaussianNB()
     clf.fit(feature_vector, class_vector)
     return clf
 
 
 
-def simple_MNB_train(feature_vector, class_vector, kernel = None):
+def simple_MNB_train(feature_vector, class_vector, kernel_type = None):
     clf = MultinomialNB()
     clf.fit(feature_vector, class_vector)
     return clf

@@ -14,46 +14,48 @@ Database file #1: thesisrefs.bib
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in zhonga2012music
 
 Done.
-You've used 4 entries,
+You've used 20 entries,
             4034 wiz_defined-function locations,
-            859 strings with 8232 characters,
-and the built_in function-call counts, 1952 in all, are:
-= -- 137
-> -- 45
-< -- 2
-+ -- 19
-- -- 10
-* -- 96
-:= -- 329
-add.period$ -- 8
-call.type$ -- 4
-change.case$ -- 7
-chr.to.int$ -- 6
-cite$ -- 4
-duplicate$ -- 152
-empty$ -- 202
-format.name$ -- 13
-if$ -- 425
+            958 strings with 11698 characters,
+and the built_in function-call counts, 13968 in all, are:
+= -- 1085
+> -- 325
+< -- 100
++ -- 172
+- -- 57
+* -- 659
+:= -- 2101
+add.period$ -- 48
+call.type$ -- 20
+change.case$ -- 21
+chr.to.int$ -- 243
+cite$ -- 21
+duplicate$ -- 1024
+empty$ -- 1227
+format.name$ -- 73
+if$ -- 3209
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 32
-newline$ -- 38
-num.names$ -- 6
-pop$ -- 95
+int.to.str$ -- 20
+missing$ -- 188
+newline$ -- 92
+num.names$ -- 20
+pop$ -- 474
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 151
+skip$ -- 1083
 stack$ -- 0
-substring$ -- 7
-swap$ -- 81
-text.length$ -- 0
+substring$ -- 589
+swap$ -- 773
+text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 4
-warning$ -- 0
-while$ -- 5
-width$ -- 5
-write$ -- 57
+type$ -- 20
+warning$ -- 1
+while$ -- 63
+width$ -- 22
+write$ -- 211
+(There was 1 warning)
