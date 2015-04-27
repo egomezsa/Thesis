@@ -8,7 +8,7 @@ are joy, sadness, anger, fear, disgust and surprise \cite{transprose}.  For this
 classifying songs based on the first three emotions (joy/happiness, sadness and anger), mainly because there is not enough sample songs whose main
 emotions are the last three (fear, disgust and surprise).
 
-\section{Features Used}
+\subsection*{Features Used}
 
 The audio features used for the experiment are the timbre data from the EchoNest dataset.
 These features are zero-mean vectors of length 12,  extracted by windowing the spectrogram in constant-width segments. 
@@ -36,14 +36,16 @@ rights over the ordering of the words while still being able to represent the co
 
   \end{figure}
     \footnotetext{\url{http://developer.echonest.com/docs/v4/_static/AnalyzeDocumentation.pdf}}
-\section{Classifiers}
+
+
+\section*{Classifiers}
 
 As mentioned in the Chapter 2, similar problems have been address with
 certain amount of success using Naive Bayes and SVMs. For the experiment the 
 classifiers selected were the Gaussian Naive Bayes, Multinomial Naive Bayes and 
 Kernel SVM with histogram intersection as the kernel. 
 
-\subsection{Naive Bayes}
+\subsection*{Naive Bayes}
 
 The Naive Bayes classifier is a statistical classifier that selects the most-likely 
 class given a particular data point. The classifier builds a statistical model for each class that 
@@ -66,7 +68,7 @@ distribution, the outcome of each of the $k$ trials can be one of $n$ different 
 Since an event cannot occur a negative number of times, the multinomial distributions is well suited for problems where 
 the vectors are non-negative such as for histogram analysis. 
 
-\subsection{Support Vector Machines}
+\subsection*{Support Vector Machines}
 
 Support Vector Machines are classifiers that construct hyperplanes that maximize the margin 
 to the labeled data points. The margin is defined to be the shortest distance from hyperplane 
@@ -127,7 +129,7 @@ every pair of histograms using this metric, the SVM can easily group similar dat
 \end{figure}
 
 
-\section{Fusion Methods}
+\section*{Fusion Methods}
 
 Using the features and the classifiers detailed above, four different fusion methods were used for 
 classification: Series Fusion, two separate Partial Ensemble and Full Ensemble. These were defined by
@@ -150,7 +152,7 @@ The set $\mathcal{A} $ is used for audio features, the set $\mathcal{L}$ is used
 for lyric features and the set $\mathcal{M}$ is used for multimodal features.  In the figures above, the squares labeled as
 Multimodal Classifier, Audio Classifier and Lyric Classifier represent a sampled classifier from the corresponding set.
 
-\subsection{Series Fusion}
+\subsection*{Series Fusion}
 
 The Series fusion method is the basic approach discussed in the Chapter 2 of this document. This
 method concatenates each raw audio vector with the corresponding raw lyric vector. As a result each song has hundreds of segments,
@@ -166,7 +168,7 @@ With a hundred vectors per song where each vector has 5012 dimensions, it become
 This fusion method involves taking a classifier from the set $Series$ and training it on the dataset resulting from the concatenation 
 of the audio vectors and bag of words.  
 
-\subsection{Audio Partial Ensemble}
+\subsection*{Audio Partial Ensemble}
 
 The Audio Partial Ensemble methods come from noting that the complexity of the Series Fusion method stemmed from the 
 fact that the amount of vectors for each of the modes was lopsided. Each song has exactly one bag of words vector of length 5000, while 
@@ -187,7 +189,7 @@ For this fusion method a classifier is taken from $\mathcal{A}$, and is used to 
 histogram is then concatenated to the bag of words to create the multimodal vector, which is used to train the classifier from $\mathcal{M}$.
 
 
-\subsection{Lyric Partial Ensemble}
+\subsection*{Lyric Partial Ensemble}
 
 The Lyric Partial Ensemble is very similar to the Audio Partial Ensemble, with the modification that the preprocessing is  
 performed to the bag of words vector instead of the audio. 
@@ -201,7 +203,7 @@ This fusion method takes a classifier from $\mathcal{L}$ and determines the like
 in a vector of length 3. This likelihood vector is concatenated to the MFCC-like vectors from the audio data to create the multimodal features. 
 A classifier from $\mathcal{M}$ is used to make the final decision based on this vector. 
 
-\subsection{Full Ensemble}
+\subsection*{Full Ensemble}
 
 Taking both Partial Ensembles to the next logical step, Full Ensemble preprocesses both the audio and the lyric vectors and concatenates the 
 the intermediate results into a single multimodal vector. The audio vectors are converted into the same emotional histogram used in the Audio Partial
@@ -224,6 +226,9 @@ The algorithms detailed in the Chapter 3 were implemented on python using the sk
 
 The module was then used to implement five different programs: Series Fusion, Partial Ensemble, Full Ensemble, Audio Only and Lyrics Only.  It was important that each program could take user input to select which classifier is to be used for what portion of the algorithm.  A script was written around these programs to try all classifier combinations as described in Chapter 3. 
 
-It is important to mention that the Audio Only benchmark showed that Gaussian Naive Bayes consistently provided better results than the Multinomial Naive Bayes, which allowed us to trim a subset of the combinations used for the Full Ensemble tests by requiring audio preprocessing to be done with a Gaussian Naive Bayes classifier. As a result, we ran six different unimodal benchmarks, nine different configurations for Full Ensemble tests, eighteen different Partial Ensemble tests and two Series fusions, for a total of thirty-five different runs.
+It is important to mention that the Audio Only benchmark showed that Gaussian Naive Bayes consistently provided better results than the Multinomial Naive Bayes, which allowed us to trim a subset of the combinations used for the Full Ensemble tests by requiring audio preprocessing to be done with a Gaussian Naive Bayes classifier. As a result, we ran six different unimodal benchmarks, nine different configurations for Full Ensemble tests, eighteen different Partial Ensemble tests and two Series fusions, for a total of thirty-five different runs. 
+
+
+Each run consisted of training the algorithm four times with different sized training sets to understand the associated learning curves. The training sets were of size 60, 150, 300, 1500 songs and were comprised of equal number of songs for each class.  After training the algorithm, it was tested against a set of 300 different songs which was also comprised of an equal number of songs for each class. Each run was repeated thirty times to have many data points for each configuration, to be able to compare performances more accurately.  The confusion matrices were recorded for post processing, and the results will be discussed in Chapter 5. 
 
     \footnotetext{The histogram intersection kernel code was obtained from kuantkid's branch of the open source scikit-learn project. \\ \url{https://github.com/kuantkid/scikit-learn/commit/16c82d8f2fe763df7bfee9bbcc40016fb84affcf}}

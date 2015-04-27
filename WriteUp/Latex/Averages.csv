@@ -1,0 +1,36 @@
+Algo,Avg,Std,Monte
+Audio Gaus,0.5356,0.2447,0.2423
+Audio Multi,0.5409,0.2318,0.379
+Audio SVM,0.3508,0.2803,0.218
+Lyrics Gaus,0.4904,0.2788,0.265
+Lyrics Multi,0.5671,0.1630,0.3693
+Lyrics SVM,0.623,0.0864,0.5283
+Full Gaus-Gaus-Gaus,0.5438,0.2476,0.283
+Full Gaus-Gaus-Multi,0.5807,0.1342,0.4243
+Full Gaus-Gaus-SVM,0.5733,0.1303,0.4317
+Full Gaus-Multi-Gaus,0.6047,0.1115,0.461
+Full Gaus-Multi-Multi,0.5733,0.1334,0.421
+Full Gaus-Multi-SVM,0.5872,0.0984,0.483
+Full Gaus-SVM-Gaus,0.6339,0.0682,0.5717
+Full Gaus-SVM-Multi,0.5888,0.1293,0.4363
+Full Gaus-SVM-SVM,0.6388,0.0698,0.5697
+Partial Audio Gaus-Gaus,0.4811,0.2964,0.2453
+Partial Audio Gaus-Multi,0.6377,0.1436,0.466
+Partial Audio Gaus-SVM,0.6846,0.0809,0.5893
+Partial Audio Multi-Gaus,0.4812,0.296,0.263
+Partial Audio Multi-Multi,0.5992,0.1763,0.5537
+Partial Audio Multi-SVM,0.6677,0.1198,0.587
+Partial Audio SVM-Gaus,0.4888,0.2850,0.2663
+Partial Audio SVM-Multi,0.6024,0.1656,0.3873
+Partial Audio SVM-SVM,0.6517,0.0966,0.5403
+Partial Lyric Gaus-Gaus,0.4902,0.2839,0.251
+Partial Lyric Gaus-Multi,0.4802,0.2801,0.2623
+Partial Lyric Gaus-SVM,0.3828,0.3109,0.1433
+Partial Lyric Multi-Gaus,0.5796,0.1492,0.3857
+Partial Lyric Multi-Multi,0.5662,0.147,0.3853
+Partial Lyric Multi-SVM,0.5646,0.1725,0.3763
+Partial Lyric SVM-Gaus,0.6286,0.0783,0.5533
+Partial Lyric SVM-Multi,0.636,0.0789,0.553
+Partial Lyric SVM-SVM,0.3598,0.2920,0.1063
+Series Gaus,0.478,0.2964,0.2663
+Series Multi,0.5651,0.153,0.3717

@@ -1,19 +1,7 @@
 \contentsline {chapter}{\ 1\hskip 1em\relax \MakeUppercase {INTRODUCTION}}{1}
 \contentsline {chapter}{\ 2\hskip 1em\relax \MakeUppercase {PREVIOUS WORK}}{3}
-\contentsline {section}{\numberline {2.1}Audio Sentiment Analysis}{3}
-\contentsline {section}{\numberline {2.2}Text Sentiment Analysis}{3}
-\contentsline {section}{\numberline {2.3}Multimodal Classification}{4}
 \contentsline {chapter}{\ 3\hskip 1em\relax \MakeUppercase {METHOD}}{6}
-\contentsline {section}{\numberline {3.1}Features Used}{6}
-\contentsline {section}{\numberline {3.2}Classifiers}{7}
-\contentsline {subsection}{\numberline {3.2.1}Naive Bayes}{7}
-\contentsline {subsection}{\numberline {3.2.2}Support Vector Machines}{8}
-\contentsline {section}{\numberline {3.3}Fusion Methods}{9}
-\contentsline {subsection}{\numberline {3.3.1}Series Fusion}{10}
-\contentsline {subsection}{\numberline {3.3.2}Audio Partial Ensemble}{10}
-\contentsline {subsection}{\numberline {3.3.3}Lyric Partial Ensemble}{11}
-\contentsline {subsection}{\numberline {3.3.4}Full Ensemble}{11}
 \contentsline {chapter}{\ 4\hskip 1em\relax \MakeUppercase {EXPERIMENT}}{13}
 \contentsline {chapter}{\ 5\hskip 1em\relax \MakeUppercase {RESULTS}}{15}
-\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{17}
-\contentsline {chapter}{\MakeUppercase {REFERENCES}}{18}
+\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{20}
+\contentsline {chapter}{\MakeUppercase {REFERENCES}}{21}
