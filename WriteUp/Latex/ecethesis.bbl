@@ -23,34 +23,42 @@
 \BIBdecl
 
 \bibitem{Bertin-Mahieux2011}
-T.~Bertin-Mahieux, D.~P. Ellis, B.~Whitman, and P.~Lamere, ``The million song
-  dataset,'' in \emph{{Proceedings of the 12th International Conference on
-  Music Information Retrieval ({ISMIR} 2011)}}, 2011.
+{Thierry Bertin-Mahieux and Daniel P.W. Ellis and Brian Whitman and Paul
+  Lamere}, ``{The Million Song Dataset},'' in \emph{{Proceedings of the 12th
+  International Conference on Music Information Retrieval ({ISMIR} 2011)}},
+  2011.
 
 \bibitem{musicXmatchDataset}
 \BIBentryALTinterwordspacing
-musicXMatch, ``The musixmatch dataset,'' 2011. [Online]. Available:
+{MusicXMatch}, ``{The MusiXMatch Dataset},'' 2011. [Online]. Available:
   \url{http://labrosa.ee.columbia.edu/millionsong/musixmatch}
 \BIBentrySTDinterwordspacing
 
 \bibitem{Logan00melfrequency}
-B.~Logan, ``Mel frequency cepstral coefficients for music modeling,'' in
-  \emph{In International Symposium on Music Information Retrieval}, 2000.
+B.~Logan, ``{Mel-Frequency Cepstral Coefficients for Music Modeling},'' in
+  \emph{{In International Symposium on Music Information Retrieval}}, 2000.
 
 \bibitem{Tzanetakis01automaticmusical}
-G.~Tzanetakis and G.~Essl, ``Automatic musical genre classification of audio
-  signals,'' in \emph{IEEE Transactions on Speech and Audio Processing}, 2001,
-  pp. 293--302.
+G.~Tzanetakis and G.~Essl, ``{Automatic Musical Genre Classification Of Audio
+  Signals},'' in \emph{{IEEE Transactions on Speech and Audio Processing}},
+  2001, pp. 293--302.
 
 \bibitem{University03detectingemotion}
-T.~L. University and T.~Li, ``Detecting emotion in music,'' 2003.
+T.~Li and M.~Ogihara, ``{Detecting Emotion in Music.}'' presented at the
+  International Society for Music Information Retrieval in Washington D.C.,
+  2003.
 
 \bibitem{transprose}
-H.~Davis and S.~M. Mohammad, ``Generating music from literature,'' presented at
-  the EACL in Gothenburg, 2014.
+{Hannah Davis and Saif M. Mohammad}, ``{Generating Music from Literature},''
+  presented at the European Chapter of the Association for Computational
+  Linguistics (EACL) in Gothenburg, 2014.
 
 \bibitem{YelpReview}
-J.~Jong, ``Predicting rating with sentiment analysis,'' 2003.
+\BIBentryALTinterwordspacing
+{Jason Jong}, ``{{Predicting Rating with Sentiment Analysis}},'' 2011.
+  [Online]. Available:
+  \url{http://cs229.stanford.edu/proj2011/Jong-PredictingRatingwithSentimentAnalysis.pdf}
+\BIBentrySTDinterwordspacing
 
 \bibitem{Pang:2002:TUS:1118693.1118704}
 \BIBentryALTinterwordspacing
@@ -75,53 +83,68 @@ A.~L. Maas, R.~E. Daly, P.~T. Pham, D.~Huang, A.~Y. Ng, and C.~Potts,
 
 \bibitem{Haddi201326}
 \BIBentryALTinterwordspacing
-E.~Haddi, X.~Liu, and Y.~Shi, ``The role of text pre-processing in sentiment
-  analysis,'' \emph{Procedia Computer Science}, vol.~17, no.~0, pp. 26 -- 32,
-  2013, first International Conference on Information Technology and
-  Quantitative Management. [Online]. Available:
+E.~Haddi, X.~Liu, and Y.~Shi, ``{The Role of Text Pre-processing in Sentiment
+  Analysis},'' \emph{Procedia Computer Science}, vol.~17, no.~0, pp. 26--32,
+  2013, {First International Conference on Information Technology and
+  Quantitative Management }. [Online]. Available:
   \url{http://www.sciencedirect.com/science/article/pii/S1877050913001385}
 \BIBentrySTDinterwordspacing
 
 \bibitem{Xia_sentimentvector}
-Y.~Xia, K.~fai Wong, L.~Wang, and M.~Xu, ``Sentiment vector space model for
-  lyric-based song sentiment classification.''
+{Xia, Yunqing and Wang, Linlin and Wong, Kam-Fai}, ``Sentiment vector space
+  model for lyric-based song sentiment classification,'' \emph{International
+  Journal of Computer Processing Of Languages}, vol.~21, no.~04, pp. 309--330,
+  2008.
 
 \bibitem{zhonga2012music}
-J.~Zhonga, Y.~Chenga, S.~Yanga, and L.~Wena, ``Music sentiment classification
-  integrating audio with lyrics,'' 2012.
+{Zhong, Jiang and Cheng, Yifeng and Yang, Siyuan and Wen, Luosheng}, ``{Music
+  Sentiment Classification Integrating Audio with Lyrics},'' \emph{Journal of
+  Information and Computational Science}, vol.~9, no.~1, pp. 35--44, 2012.
 
 \bibitem{yang2003feature}
-J.~Yang, J.-y. Yang, D.~Zhang, and J.-f. Lu, ``Feature fusion: parallel
-  strategy vs. serial strategy,'' \emph{Pattern Recognition}, vol.~36, no.~6,
-  pp. 1369--1381, 2003.
+{Yang, Jian and Yang, Jing-yu and Zhang, David and Lu, Jian-feng}, ``Feature
+  fusion: parallel strategy vs. serial strategy,'' \emph{Pattern Recognition},
+  vol.~36, no.~6, pp. 1369--1381, 2003.
 
 \bibitem{liang2011music}
-D.~Liang, H.~Gu, and B.~O?Connor, ``Music genre classification with the million
-  song dataset,'' \emph{Machine Learning Department, CMU}, 2011.
+\BIBentryALTinterwordspacing
+{Liang, Dawen and Gu, Haijie and O'Connor, Brendan}, ``{Music Genre
+  Classification with the Million Song Dataset},'' 2011. [Online]. Available:
+  \url{http://www.ee.columbia.edu/~dliang/files/FINAL.pdf}
+\BIBentrySTDinterwordspacing
 
 \bibitem{ahmadian2013multi}
-K.~Ahmadian and M.~Gavrilova, ``A multi-modal approach for high-dimensional
-  feature recognition,'' \emph{The Visual Computer}, vol.~29, no.~2, pp.
+K.~Ahmadian and M.~Gavrilova, ``{A Multi-Modal Approach for High-Dimensional
+  Feature Recognition},'' \emph{The Visual Computer}, vol.~29, no.~2, pp.
   123--130, 2013.
 
 \bibitem{caridakis2007multimodal}
 G.~Caridakis, G.~Castellano, L.~Kessous, A.~Raouzaiou, L.~Malatesta,
-  S.~Asteriadis, and K.~Karpouzis, ``Multimodal emotion recognition from
-  expressive faces, body gestures and speech,'' in \emph{Artificial
-  intelligence and innovations 2007: From theory to applications}.\hskip 1em
-  plus 0.5em minus 0.4em\relax Springer, 2007, pp. 375--388.
+  S.~Asteriadis, and K.~Karpouzis, ``{Multimodal Emotion Recognition from
+  Expressive Faces, Body Gestures and Speech},'' in \emph{{Artificial
+  Intelligence and Innovations 2007: From Theory to Applications}}.\hskip 1em
+  plus 0.5em minus 0.4em\relax New York City, New York: Springer, 2007, pp.
+  375--388.
 
 \bibitem{li2008multi}
-S.~Li and C.~Zong, ``Multi-domain adaptation for sentiment classification:
-  Using multiple classifier combining methods,'' in \emph{Natural Language
-  Processing and Knowledge Engineering, 2008. NLP-KE'08. International
-  Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 1--8.
+{Li, Shoushan and Zong, Chengqing}, ``{Multi-domain adaptation for Sentiment
+  Classification: Using Multiple Classifier Combining Methods},'' in
+  \emph{{Natural Language Processing and Knowledge Engineering, 2008.
+  NLP-KE'08. International Conference on}}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2008, pp. 1--8.
 
 \bibitem{hu2010improving}
-X.~Hu and J.~S. Downie, ``Improving mood classification in music digital
-  libraries by combining lyrics and audio,'' in \emph{Proceedings of the 10th
-  annual joint conference on Digital libraries}.\hskip 1em plus 0.5em minus
+X.~Hu and J.~S. Downie, ``{Improving Mood Classification in Music Digital
+  Libraries by Combining Lyrics and Audio},'' in \emph{{Proceedings of the 10th
+  Annual Joint Conference on Digital Libraries}}.\hskip 1em plus 0.5em minus
   0.4em\relax ACM, 2010, pp. 159--168.
+
+\bibitem{ekman1987universals}
+P.~Ekman, W.~V. Friesen, M.~O'Sullivan, A.~Chan, I.~Diacoyanni-Tarlatzis,
+  K.~Heider, R.~Krause, W.~A. LeCompte, T.~Pitcairn, P.~E. Ricci-Bitti et~al.,
+  ``Universals and cultural differences in the judgments of facial expressions
+  of emotion.'' \emph{Journal of personality and social psychology}, vol.~53,
+  no.~4, p. 712, 1987.
 
 \bibitem{maji2008classification}
 S.~Maji, A.~C. Berg, and J.~Malik, ``Classification using intersection kernel
@@ -132,5 +155,12 @@ S.~Maji, A.~C. Berg, and J.~Malik, ``Classification using intersection kernel
 \bibitem{chapelle2007training}
 O.~Chapelle, ``Training a support vector machine in the primal,'' \emph{Neural
   Computation}, vol.~19, no.~5, pp. 1155--1178, 2007.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay, ``{Scikit-learn:
+  Machine Learning in {P}ython},'' \emph{Journal of Machine Learning Research},
+  vol.~12, pp. 2825--2830, 2011.
 
 \end{thebibliography}

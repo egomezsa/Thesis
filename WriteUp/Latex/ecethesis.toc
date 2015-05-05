@@ -3,5 +3,6 @@
 \contentsline {chapter}{\ 3\hskip 1em\relax \MakeUppercase {METHOD}}{6}
 \contentsline {chapter}{\ 4\hskip 1em\relax \MakeUppercase {EXPERIMENT}}{13}
 \contentsline {chapter}{\ 5\hskip 1em\relax \MakeUppercase {RESULTS}}{15}
-\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{20}
-\contentsline {chapter}{\MakeUppercase {REFERENCES}}{21}
+\contentsline {chapter}{\ 6\hskip 1em\relax \MakeUppercase {Conclusion}}{22}
+\contentsline {chapter}{\ 7\hskip 1em\relax \MakeUppercase {FUTURE WORK}}{23}
+\contentsline {chapter}{\MakeUppercase {REFERENCES}}{24}

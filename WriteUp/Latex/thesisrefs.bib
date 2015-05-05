@@ -78,8 +78,8 @@ CTLnames_show_etal = "1"
  %  Actual bib entries
  
  @INPROCEEDINGS{Bertin-Mahieux2011,
-  author = {Thierry Bertin-Mahieux and Daniel P.W. Ellis and Brian Whitman and Paul Lamere},
-  title = {The Million Song Dataset},
+  author = {{Thierry Bertin-Mahieux and Daniel P.W. Ellis and Brian Whitman and Paul Lamere}},
+  title = {{The Million Song Dataset}},
   booktitle = {{Proceedings of the 12th International Conference on Music Information
 	Retrieval ({ISMIR} 2011)}},
   year = {2011},
@@ -89,44 +89,49 @@ CTLnames_show_etal = "1"
 
 @INPROCEEDINGS{Logan00melfrequency,
     author = {Beth Logan},
-    title = {Mel Frequency Cepstral Coefficients for Music Modeling},
-    booktitle = {In International Symposium on Music Information Retrieval},
+    title = {{Mel-Frequency Cepstral Coefficients for Music Modeling}},
+    booktitle = {{In International Symposium on Music Information Retrieval}},
     year = {2000}
 }
 
 @INPROCEEDINGS{Tzanetakis01automaticmusical,
     author = {George Tzanetakis and Georg Essl},
-    title = {Automatic Musical Genre Classification Of Audio Signals},
-    booktitle = {IEEE Transactions on Speech and Audio Processing},
+    title = {{Automatic Musical Genre Classification Of Audio Signals}},
+    booktitle = {{IEEE Transactions on Speech and Audio Processing}},
     year = {2001},
     pages = {293--302}
 }
 
-@MISC{YelpReview,
-    author = {Jason Jong},
-    title = {Predicting Rating with Sentiment Analysis},
-    booktitle = {IEEE Transactions on Speech and Audio Processing},
-    year = {2003}
-}
 
-@MISC{University03detectingemotion,
-    author = {Tao Li University and Tao Li},
-    title = {Detecting Emotion in Music},
-    year = {2003}
+@electronic{YelpReview,
+  author        = "{Jason Jong}",
+  title         = "{{Predicting Rating with Sentiment Analysis}}",
+  url           = "http://cs229.stanford.edu/proj2011/Jong-PredictingRatingwithSentimentAnalysis.pdf",
+  year          = "2011"
+};
+ 
+
+
+@inproceedings{University03detectingemotion,
+  title={{Detecting Emotion in Music.}},
+  author={Li, Tao and Ogihara, Mitsunori},
+    intype        = "presented at the",
+  booktitle     = "International Society for Music Information Retrieval  in Washington D.C.",
+  year={2003}
 }
 
 @electronic{musicXmatchDataset,
-  author        = "musicXMatch",
-  title         = "The musiXmatch Dataset",
+  author        = "{MusicXMatch}",
+  title         = "{The MusiXMatch Dataset}",
   url           = "http://labrosa.ee.columbia.edu/millionsong/musixmatch",
   year          = "2011"
 };
  
  @inproceedings{transprose,
-  author        = "Hannah Davis and Saif M. Mohammad",
-  title         = "Generating Music from Literature",
+  author        = "{Hannah Davis and Saif M. Mohammad}",
+  title         = "{Generating Music from Literature}",
   intype        = "presented at the",
-  booktitle     = "EACL in Gothenburg",
+  booktitle     = "European Chapter of the Association for Computational Linguistics (EACL) in Gothenburg",
   year          = "2014"
 };
 
@@ -164,13 +169,13 @@ CTLnames_show_etal = "1"
 
 
 @article{Haddi201326,
-title = "The Role of Text Pre-processing in Sentiment Analysis ",
+title = "{The Role of Text Pre-processing in Sentiment Analysis}",
 journal = "Procedia Computer Science ",
 volume = "17",
 number = "0",
-pages = "26 - 32",
+pages = "26-32",
 year = "2013",
-note = "First International Conference on Information Technology and Quantitative Management ",
+note = "{First International Conference on Information Technology and Quantitative Management }",
 issn = "1877-0509",
 doi = "http://dx.doi.org/10.1016/j.procs.2013.05.005",
 url = "http://www.sciencedirect.com/science/article/pii/S1877050913001385",
@@ -183,21 +188,32 @@ keywords = "\{SVM\} ",
 abstract = "Abstract It is challenging to understand the latest trends and summarise the state or general opinions about products due to the big diversity and size of social media data, and this creates the need of automated and real time opinion extraction and mining. Mining online opinion is a form of sentiment analysis that is treated as a difficult text classification task. In this paper, we explore the role of text pre-processing in sentiment analysis, and report on experimental results that demonstrate that with appropriate feature selection and representation, sentiment analysis accuracies using support vector machines (SVM) in this area may be significantly improved. The level of accuracy achieved is shown to be comparable to the ones achieved in topic categorisation although sentiment analysis is considered to be a much harder problem in the literature. "
 }
 
-@MISC{Xia_sentimentvector,
-    author = {Yunqing Xia and Kam-fai Wong and Linlin Wang and Mingxing Xu},
-    title = {Sentiment Vector Space Model for Lyric-based Song Sentiment Classification},
-    year = {}
+
+@article{Xia_sentimentvector,
+  title={Sentiment Vector Space Model for Lyric-Based Song sentiment Classification},
+  author={{Xia, Yunqing and Wang, Linlin and Wong, Kam-Fai}},
+  journal={International Journal of Computer Processing Of Languages},
+  volume={21},
+  number={04},
+  pages={309--330},
+  year={2008},
+  publisher={World Scientific}
 }
 
 @article{zhonga2012music,
-  title={Music sentiment classification integrating audio with lyrics},
-  author={Zhonga, Jiang and Chenga, Yifeng and Yanga, Siyuan and Wena, Luosheng},
-  year={2012}
+  title={{Music Sentiment Classification Integrating Audio with Lyrics}},
+  author={{Zhong, Jiang and Cheng, Yifeng and Yang, Siyuan and Wen, Luosheng}},
+  journal={Journal of Information and Computational Science},
+  volume={9},
+  number={1},
+  pages={35-44},
+  year={2012},
+  publisher={JICS}
 }
 
 @article{yang2003feature,
   title={Feature fusion: parallel strategy vs. serial strategy},
-  author={Yang, Jian and Yang, Jing-yu and Zhang, David and Lu, Jian-feng},
+  author={{Yang, Jian and Yang, Jing-yu and Zhang, David and Lu, Jian-feng}},
   journal={Pattern Recognition},
   volume={36},
   number={6},
@@ -206,15 +222,18 @@ abstract = "Abstract It is challenging to understand the latest trends and summa
   publisher={Elsevier}
 }
 
-@article{liang2011music,
-  title={Music genre classification with the million song dataset},
-  author={Liang, Dawen and Gu, Haijie and O?Connor, Brendan},
+
+
+@electronic{liang2011music,
+  title={{Music Genre Classification with the Million Song Dataset}},
+  author={{Liang, Dawen and Gu, Haijie and O'Connor, Brendan}},
   journal={Machine Learning Department, CMU},
-  year={2011}
+  year={2011},
+  url={http://www.ee.columbia.edu/~dliang/files/FINAL.pdf}
 }
 
 @article{ahmadian2013multi,
-  title={A multi-modal approach for high-dimensional feature recognition},
+  title={{A Multi-Modal Approach for High-Dimensional Feature Recognition}},
   author={Ahmadian, Kushan and Gavrilova, Marina},
   journal={The Visual Computer},
   volume={29},
@@ -225,27 +244,28 @@ abstract = "Abstract It is challenging to understand the latest trends and summa
 }
 
 @incollection{caridakis2007multimodal,
-  title={Multimodal emotion recognition from expressive faces, body gestures and speech},
+  title={{Multimodal Emotion Recognition from Expressive Faces, Body Gestures and Speech}},
   author={Caridakis, George and Castellano, Ginevra and Kessous, Loic and Raouzaiou, Amaryllis and Malatesta, Lori and Asteriadis, Stelios and Karpouzis, Kostas},
-  booktitle={Artificial intelligence and innovations 2007: From theory to applications},
+  booktitle={{Artificial Intelligence and Innovations 2007: From Theory to Applications}},
   pages={375--388},
   year={2007},
+  address ={New York City, New York},
   publisher={Springer}
 }
 
 @inproceedings{li2008multi,
-  title={Multi-domain adaptation for sentiment classification: Using multiple classifier combining methods},
-  author={Li, Shoushan and Zong, Chengqing},
-  booktitle={Natural Language Processing and Knowledge Engineering, 2008. NLP-KE'08. International Conference on},
+  title={{Multi-domain adaptation for Sentiment Classification: Using Multiple Classifier Combining Methods}},
+  author={{Li, Shoushan and Zong, Chengqing}},
+  booktitle={{Natural Language Processing and Knowledge Engineering, 2008. NLP-KE'08. International Conference on}},
   pages={1--8},
   year={2008},
   organization={IEEE}
 }
 
 @inproceedings{hu2010improving,
-  title={Improving mood classification in music digital libraries by combining lyrics and audio},
+  title={{Improving Mood Classification in Music Digital Libraries by Combining Lyrics and Audio}},
   author={Hu, Xiao and Downie, J Stephen},
-  booktitle={Proceedings of the 10th annual joint conference on Digital libraries},
+  booktitle={{Proceedings of the 10th Annual Joint Conference on Digital Libraries}},
   pages={159--168},
   year={2010},
   organization={ACM}
@@ -272,6 +292,30 @@ abstract = "Abstract It is challenging to understand the latest trends and summa
   year={2007},
   publisher={MIT Press}
 }
+
+@article{scikit-learn,
+ title={{Scikit-learn: Machine Learning in {P}ython}},
+ author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
+         and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
+         and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
+         Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+ journal={Journal of Machine Learning Research},
+ volume={12},
+ pages={2825--2830},
+ year={2011}
+}
+
+@article{ekman1987universals,
+  title={Universals and cultural differences in the judgments of facial expressions of emotion.},
+  author={Ekman, Paul and Friesen, Wallace V and O'Sullivan, Maureen and Chan, Anthony and Diacoyanni-Tarlatzis, Irene and Heider, Karl and Krause, Rainer and LeCompte, William Ayhan and Pitcairn, Tom and Ricci-Bitti, Pio E and others},
+  journal={Journal of personality and social psychology},
+  volume={53},
+  number={4},
+  pages={712},
+  year={1987},
+  publisher={American Psychological Association}
+}
+
  % End of bib entries
  % ******************************************** 
  
