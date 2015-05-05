@@ -73,11 +73,11 @@ B.~Pang, L.~Lee, and S.~Vaithyanathan, ``Thumbs up?: Sentiment classification
 \bibitem{Maas:2011:LWV:2002472.2002491}
 \BIBentryALTinterwordspacing
 A.~L. Maas, R.~E. Daly, P.~T. Pham, D.~Huang, A.~Y. Ng, and C.~Potts,
-  ``Learning word vectors for sentiment analysis,'' in \emph{Proceedings of the
-  49th Annual Meeting of the Association for Computational Linguistics: Human
-  Language Technologies - Volume 1}, ser. HLT '11.\hskip 1em plus 0.5em minus
-  0.4em\relax Stroudsburg, PA, USA: Association for Computational Linguistics,
-  2011. [Online]. Available:
+  ``{Learning Word Vectors for Sentiment Analysis},'' in \emph{{Proceedings of
+  the 49th Annual Meeting of the Association for Computational Linguistics:
+  Human Language Technologies - Volume 1}}, ser. HLT '11.\hskip 1em plus 0.5em
+  minus 0.4em\relax Stroudsburg, PA, USA: Association for Computational
+  Linguistics, 2011. [Online]. Available:
   \url{http://dl.acm.org/citation.cfm?id=2002472.2002491} pp. 142--150.
 \BIBentrySTDinterwordspacing
 
@@ -91,9 +91,9 @@ E.~Haddi, X.~Liu, and Y.~Shi, ``{The Role of Text Pre-processing in Sentiment
 \BIBentrySTDinterwordspacing
 
 \bibitem{Xia_sentimentvector}
-{Xia, Yunqing and Wang, Linlin and Wong, Kam-Fai}, ``Sentiment vector space
-  model for lyric-based song sentiment classification,'' \emph{International
-  Journal of Computer Processing Of Languages}, vol.~21, no.~04, pp. 309--330,
+{Xia, Yunqing and Wang, Linlin and Wong, Kam-Fai}, ``{Sentiment Vector Space
+  Model for Lyric-Based Song sentiment Classification},'' \emph{{International
+  Journal of Computer Processing Of Languages}}, vol.~21, no.~04, pp. 309--330,
   2008.
 
 \bibitem{zhonga2012music}
@@ -102,8 +102,8 @@ E.~Haddi, X.~Liu, and Y.~Shi, ``{The Role of Text Pre-processing in Sentiment
   Information and Computational Science}, vol.~9, no.~1, pp. 35--44, 2012.
 
 \bibitem{yang2003feature}
-{Yang, Jian and Yang, Jing-yu and Zhang, David and Lu, Jian-feng}, ``Feature
-  fusion: parallel strategy vs. serial strategy,'' \emph{Pattern Recognition},
+{Yang, Jian and Yang, Jing-yu and Zhang, David and Lu, Jian-feng}, ``{Feature
+  Fusion: Parallel Strategy vs. Serial Strategy},'' \emph{Pattern Recognition},
   vol.~36, no.~6, pp. 1369--1381, 2003.
 
 \bibitem{liang2011music}
@@ -127,7 +127,7 @@ G.~Caridakis, G.~Castellano, L.~Kessous, A.~Raouzaiou, L.~Malatesta,
   375--388.
 
 \bibitem{li2008multi}
-{Li, Shoushan and Zong, Chengqing}, ``{Multi-domain adaptation for Sentiment
+{Li, Shoushan and Zong, Chengqing}, ``{Multi-Domain Adaptation for Sentiment
   Classification: Using Multiple Classifier Combining Methods},'' in
   \emph{{Natural Language Processing and Knowledge Engineering, 2008.
   NLP-KE'08. International Conference on}}.\hskip 1em plus 0.5em minus
@@ -140,21 +140,22 @@ X.~Hu and J.~S. Downie, ``{Improving Mood Classification in Music Digital
   0.4em\relax ACM, 2010, pp. 159--168.
 
 \bibitem{ekman1987universals}
-P.~Ekman, W.~V. Friesen, M.~O'Sullivan, A.~Chan, I.~Diacoyanni-Tarlatzis,
-  K.~Heider, R.~Krause, W.~A. LeCompte, T.~Pitcairn, P.~E. Ricci-Bitti et~al.,
-  ``Universals and cultural differences in the judgments of facial expressions
-  of emotion.'' \emph{Journal of personality and social psychology}, vol.~53,
-  no.~4, p. 712, 1987.
+{Ekman, Paul and Friesen, Wallace V and O'Sullivan, Maureen and Chan, Anthony
+  and Diacoyanni-Tarlatzis, Irene and Heider, Karl and Krause, Rainer and
+  LeCompte, William Ayhan and Pitcairn, Tom and Ricci-Bitti, Pio E and others},
+  ``{Universals and Cultural Differences in the Judgments of Facial Expressions
+  of Emotion},'' \emph{{Journal of Personality and Social Psychology}},
+  vol.~53, no.~4, p. 712, 1987.
 
 \bibitem{maji2008classification}
-S.~Maji, A.~C. Berg, and J.~Malik, ``Classification using intersection kernel
-  support vector machines is efficient,'' in \emph{Computer Vision and Pattern
-  Recognition, 2008. CVPR 2008. IEEE Conference on}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2008, pp. 1--8.
+{Maji, Subhransu and Berg, Alexander C and Malik, Jitendra}, ``{Classification
+  Using Intersection Kernel Support Vector Machines is Efficient},'' in
+  \emph{{Computer Vision and Pattern Recognition, 2008. CVPR 2008. IEEE
+  Conference on}}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 1--8.
 
 \bibitem{chapelle2007training}
-O.~Chapelle, ``Training a support vector machine in the primal,'' \emph{Neural
-  Computation}, vol.~19, no.~5, pp. 1155--1178, 2007.
+O.~Chapelle, ``{Training a Support Vector Machine in the Primal},''
+  \emph{Neural Computation}, vol.~19, no.~5, pp. 1155--1178, 2007.
 
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,

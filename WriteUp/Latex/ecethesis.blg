@@ -18,37 +18,37 @@ Database file #1: thesisrefs.bib
 Done.
 You've used 22 entries,
             4034 wiz_defined-function locations,
-            984 strings with 12962 characters,
-and the built_in function-call counts, 16665 in all, are:
-= -- 1329
-> -- 384
+            984 strings with 12987 characters,
+and the built_in function-call counts, 16240 in all, are:
+= -- 1313
+> -- 335
 < -- 132
-+ -- 212
-- -- 68
-* -- 788
-:= -- 2526
++ -- 188
+- -- 56
+* -- 762
+:= -- 2489
 add.period$ -- 52
 call.type$ -- 22
 change.case$ -- 22
 chr.to.int$ -- 306
 cite$ -- 22
-duplicate$ -- 1195
-empty$ -- 1407
-format.name$ -- 79
-if$ -- 3842
+duplicate$ -- 1169
+empty$ -- 1384
+format.name$ -- 65
+if$ -- 3742
 int.to.chr$ -- 0
 int.to.str$ -- 22
-missing$ -- 218
+missing$ -- 206
 newline$ -- 102
 num.names$ -- 22
-pop$ -- 513
+pop$ -- 476
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1300
+skip$ -- 1276
 stack$ -- 0
 substring$ -- 744
-swap$ -- 950
+swap$ -- 925
 text.length$ -- 30
 text.prefix$ -- 0
 top$ -- 5

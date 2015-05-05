@@ -10,9 +10,9 @@ the reliability of the overall system in diverse datasets, it is not beneficial 
 accuracy for one class and sub-random choice on another class. This gap is smoothed out while 
 comparing average accuracies, which is why the algorithms are also compared using  sensitivity.
 
-Sensitivity is a measurement of how well a test recognizes a condition. Sensitivity is only defined 
-for binary problems, so the classification outcome had to be reinterpreted. Since this problem
-dealt with three classes, each run created three different one-vs-all confusion matrices that determined the True Positives (TP) and the False Negatives (FN) for each class.  The class sensitivity was calculated as following:
+Sensitivity is a measurement of how well a test recognizes a condition correctly. Sensitivity is only defined 
+for binary problems, so the classification outcome had to be reinterpreted to answer the question \lq Does the song belong to this class?'. Since this problem
+dealt with three classes, each run created three different one-vs-all confusion matrices for the previous question. Each confusion matrix determined the True Positives (TP) and the False Negatives (FN) for each class, which were used to calculate sensitivity as follows:
 
 \begin{equation}
 \text{Sens}_{i} = \frac{TP_i}{TP_i +FN_i} \quad i \in \{\text{happy}, \text{sad}, \text{angry}\}
@@ -96,7 +96,7 @@ Table 5.2 is very informative in terms of what classes are harder to recognize.
 Clearly, happy songs pose a greater challenge than angry songs. This makes 
 sense because angry words tend to only be present in angry music. For example 
 words like "wrath" or "rage" are more indicative of emotion than words like "sunny" or "cheer".
- The same occurs with the Sad classification, but to a lesser extent.
+ The same occurs with the sad classification, but to a lesser extent.
  
  Consider how  the accuracy for angry songs remains relatively constant throughout all the experiments,
 but the accuracy for happy songs plummets in Table 5.2.d and Table 5.2.e. Table 5.2.e shows that the audio-only Gaussian 
@@ -108,8 +108,9 @@ classifier incorrectly selects the angry classification for 56.77\% of happy son
  
 These  issues are at play in the case of unimodal classifiers, which would be undesirable for
 real world applications. As seen in Table 5.2.a and Figure 5.2.b,  
-multimodal classifiers can identify happy songs more accurately without any noticeable loss in angry classification. 
-Additionally these classifiers do not select a particular class in a disproportionate manner. 
+multimodal classifiers can identify happy songs more accurately without any noticeable loss in angry classification. Both 
+ Table 5.2.a and Figure 5.2.b also have a higher accuracy than the best unimodal classifier shown in Table 5.2.c.
+Additionally these classifiers do not select a particular class with random chance like Table 5.2.d, nor in a disproportionate manner like Table 5.2.e.
 
 
 
@@ -193,10 +194,11 @@ challenging sentiments can be improved greatly through multimodal classification
 impact on the accuracy of other classes. 
 
 
-Although many configurations were introduced, the most promising were the Partial Lyric and the Partial
-Audio architectures. These two groups dominated the ranks of the top ten in both accuracy and Sensitivity. 
-All comparison metrics reached the conclusion that the Partial Audio architecture with an initial Gaussian classifier followed
-by an SVM with histogram intersection as a kernel is the strongest classifier.  
+Although many configurations were introduced, the most promising were the \lq Lyric Partial Ensemble' and the \lq Audio Partial
+Ensemble'. These two groups dominated the ranks of the top ten in both accuracy and sensitivity. 
+All comparison metrics reached the conclusion that the \lq Audio Partial
+Ensemble' Audio architecture with an initial Gaussian classifier followed
+by an SVM with histogram intersection as a kernel is the strongest classifier explored.
 
 
 
